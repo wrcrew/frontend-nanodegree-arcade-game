@@ -1,4 +1,3 @@
-//initial commit
 
 // Enemies our player must avoid
 var Enemy = function() {
@@ -8,8 +7,9 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = 1;
+    this.x = -50;
     // 1 is left and 2 is right
+    this.col = 0;
     this.row = Math.floor(Math.random() * 3) + 1;
     //console.log(this.x);
 
@@ -29,8 +29,21 @@ Enemy.prototype.update = function(dt) {
     //ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     //console.log(this.x);
 
-    if (this.x == Player.x) {
-        if (this.row == Player.row) {
+    if (this.x > 400) {
+        this.col = 4;
+    } else if (this.x > 300) {
+            this.col = 3;
+        } else if (this.x > 200) {
+                this.col = 2;
+            } else if (this.x > 100) {
+                this.col = 1;
+                };
+
+
+
+
+    if (this.row == player.row) {
+        if (this.col == player.col) {
             gameOver();
         }
     }
@@ -56,12 +69,31 @@ Enemy.prototype.render = function() {
 // Place the player object in a variable called player
 
 
+var activeGame = 1;
+
 var enemy1 = new Enemy();
 var enemy2 = new Enemy();
-var enemy3 = new Enemy();
-var enemy4 = new Enemy();
-var enemy5 = new Enemy();
-var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
+//var enemy3 = new Enemy();
+var allEnemies = [enemy1, enemy2];
+
+console.log(allEnemies);
+
+/* while (activeGame = 1) {
+
+var myVar;
+var enemyTimeout = function() {
+    myVar = setTimeout(createEnemy, 1500);
+};
+
+};
+
+var createEnemy = function() {
+        var enemyNew = new Enemy();
+        allEnemies.push(enemyNew);
+        console.log(allEnemies);
+};
+*/
+
 
 var Player = function() {
 
@@ -77,19 +109,19 @@ Player.prototype.update = function(dt) {
 
 Player.prototype.handleInput = function(key) {
 
-    console.log(this.row+ "row in func");
-    console.log(this.col+ "col in func")
+    //console.log(this.row+ "row in func");
+    //console.log(this.col+ "col in func")
     //console.log(key);
-    console.log(this.x+ "x again");
-    console.log(this.y+ "y in func");
+    //console.log(this.x+ "x again");
+    //console.log(this.y+ "y in func");
 
         if (key == 'left') {
             if (this.col == 0) {}
                 else {
             this.col = this.col - 1;
-            console.log(this.col);
+            //console.log(this.col);
             this.x = colToCoord(this.col);
-            console.log(this.x);
+            //console.log(this.x);
         }
         } else if (key == 'right') {
             if (this.col == 4) {}
@@ -113,10 +145,12 @@ Player.prototype.handleInput = function(key) {
     };
 
 
+
+
 };
 
 var rowToCoord = function(gridValue) {
-        gridValue = 65 + (83 * (gridValue - 1));
+        gridValue = 70 + (83 * (gridValue - 1));
         return gridValue;
     };
 
@@ -133,6 +167,7 @@ Player.prototype.render = function() {
 };
 
 var gameOver = function() {
+    console.log("game over");
 
 };
 
