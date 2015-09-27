@@ -125,7 +125,10 @@ var Engine = (function(global) {
          */
         for (row = 0; row < numRows; row++) {
             for (col = 0; col < numCols; col++) {
-                /* The drawImage function of the canvas' context element
+                /* The drawImage function of the 
+
+
+        ' context element
                  * requires 3 parameters: the image to draw, the x coordinate
                  * to start drawing and the y coordinate to start drawing.
                  * We're using our Resources helpers to refer to our images
@@ -160,7 +163,7 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
+        ctx.fillText("Game Over", 100, 100);
     }
 
     /* Go ahead and load all of the images we know we're going to need to
