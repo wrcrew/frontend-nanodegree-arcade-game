@@ -7,9 +7,10 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = -50;
+    this.x = -75;
     // 1 is left and 2 is right
     this.col = 0;
+    this.colBehind = 0;
     this.row = Math.floor(Math.random() * 3) + 1;
     //console.log(this.x);
 
@@ -25,7 +26,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    //console.log(activeGame);
+    console.log(activeGame);
     if (activeGame = 1) {
         if (this.x < 506) {
     this.x = (this.x + (this.speed * 1.5));
@@ -34,23 +35,36 @@ Enemy.prototype.update = function(dt) {
     //ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     //console.log(this.x);
 
+
     if (this.x > 505) {
         this.col = 5;
-    } else if (this.x > 305) {
+    } else if (this.x > 325) {
             this.col = 4;
-        } else if (this.x > 205) {
+        } else if (this.x > 225) {
                 this.col = 3;
-            } else if (this.x > 105) {
+            } else if (this.x > 125) {
                     this.col = 2;
                 } else if (this.x > 25) {
                     this.col = 1;
+                    };
+
+    if (this.x > 480) {
+        this.colBehind = 5;
+    } else if (this.x > 380) {
+            this.colBehind = 4;
+        } else if (this.x > 280) {
+                this.colBehind = 3;
+            } else if (this.x > 180) {
+                    this.colBehind = 2;
+                } else if (this.x > 80) {
+                    this.colBehind = 1;
                     };
 
 
 
 
     if (this.row == player.row) {
-        if (this.col == player.col) {
+        if (this.col == player.col || this.colBehind == player.col) {
             gameOver();
         }
     };
@@ -87,7 +101,7 @@ console.log(allEnemies);
 
 var myVar;
 var enemyTimeout = function() {
-    myVar = setInterval(createEnemy, 1500);
+    myVar = setInterval(createEnemy, 500);
 };
 
 
@@ -176,7 +190,7 @@ var gameOver = function() {
     console.log("game over");
     activeGame = 0;
     ctx.clearRect(0, 0, 505, 606);
-    //allEnemies.length = 0;
+    allEnemies.length = 0;
 
 
 };
