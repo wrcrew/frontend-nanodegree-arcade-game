@@ -25,19 +25,26 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    //console.log(activeGame);
+    if (activeGame = 1) {
+        if (this.x < 506) {
     this.x = (this.x + (this.speed * 1.5));
+        };
+    };
     //ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     //console.log(this.x);
 
-    if (this.x > 400) {
-        this.col = 4;
-    } else if (this.x > 300) {
-            this.col = 3;
-        } else if (this.x > 200) {
-                this.col = 2;
-            } else if (this.x > 100) {
-                this.col = 1;
-                };
+    if (this.x > 505) {
+        this.col = 5;
+    } else if (this.x > 305) {
+            this.col = 4;
+        } else if (this.x > 205) {
+                this.col = 3;
+            } else if (this.x > 105) {
+                    this.col = 2;
+                } else if (this.x > 25) {
+                    this.col = 1;
+                    };
 
 
 
@@ -46,7 +53,7 @@ Enemy.prototype.update = function(dt) {
         if (this.col == player.col) {
             gameOver();
         }
-    }
+    };
 };
 
 // Draw the enemy on the screen, required method for game
@@ -78,21 +85,20 @@ var allEnemies = [enemy1, enemy2];
 
 console.log(allEnemies);
 
-/* while (activeGame = 1) {
-
 var myVar;
 var enemyTimeout = function() {
-    myVar = setTimeout(createEnemy, 1500);
+    myVar = setInterval(createEnemy, 1500);
 };
 
-};
+
 
 var createEnemy = function() {
         var enemyNew = new Enemy();
         allEnemies.push(enemyNew);
         console.log(allEnemies);
 };
-*/
+
+enemyTimeout();
 
 
 var Player = function() {
@@ -168,6 +174,10 @@ Player.prototype.render = function() {
 
 var gameOver = function() {
     console.log("game over");
+    activeGame = 0;
+    ctx.clearRect(0, 0, 505, 606);
+    //allEnemies.length = 0;
+
 
 };
 
