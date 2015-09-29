@@ -8,7 +8,7 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = -75;
+    this.x = -100;
     // 1 is left and 2 is right
     this.col = 0;
     this.colBehind = 0;
@@ -184,16 +184,17 @@ var colToCoord = function(gridValue) {
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    //console.log(this.row);
+    if (this.row == 0) {
+        ctx.font = "30px Arial";
+        ctx.fillText("you win", 10, 100);
+        setTimeout(gameOverTimeout, 500);
+
+    }
 
 };
 
-var gameOver = function() {
-
-    ctx.font = "30px Arial";
-    ctx.fillText("GAME OVER", 300, 300);
-    console.log("game over");
-
-    var gameOverTimeout = function() {
+var gameOverTimeout = function() {
 
     activeGame = 0;
     ctx.clearRect(0, 0, 505, 606);
@@ -205,8 +206,20 @@ var gameOver = function() {
 
 };
 
+var gameOver = function() {
+
+    ctx.font = "30px Arial";
+    ctx.fillText("GAME OVER", 300, 300);
+    //console.log("game over");
+
+
+
     setTimeout(gameOverTimeout, 0);
 
+
+};
+
+var playerWins = function() {
 
 };
 
