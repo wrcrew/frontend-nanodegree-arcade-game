@@ -28,9 +28,10 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     //console.log(activeGame);
+
     if (this.x < 506) {
     this.x = (this.x + (this.speed * 1.5));
-        };
+    };
     //ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     //console.log(allEnemies);
 
@@ -59,13 +60,17 @@ Enemy.prototype.update = function(dt) {
                     this.colBehind = 1;
                     };
 
-
+//var pauseEnemy = function() {
+//   this.speed = 0;
+//}
 
 
     if (this.row == player.row) {
         if (this.col == player.col || this.colBehind == player.col) {
-
+            //pauseEnemy();
             gameOver();
+            ctx.fillText("Game Over", 200, 200);
+            //console.log(this.speed);
         }
     };
 };
@@ -197,9 +202,10 @@ var gameOver = function() {
     player.col = 2;
     player.x = 202;
     player.y = 397;
+
 };
 
-    setTimeout(gameOverTimeout, 1000);
+    setTimeout(gameOverTimeout, 0);
 
 
 };
