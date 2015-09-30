@@ -30,7 +30,7 @@ Enemy.prototype.update = function(dt) {
     //console.log(activeGame);
 
     if (this.x < 506) {
-    this.x = (this.x + (this.speed * 1.5));
+        this.x = (this.x + (this.speed * 1.5));
     };
     //ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     //console.log(allEnemies);
@@ -39,30 +39,30 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 505) {
         this.col = 5;
     } else if (this.x > 325) {
-            this.col = 4;
-        } else if (this.x > 225) {
-                this.col = 3;
-            } else if (this.x > 125) {
-                    this.col = 2;
-                } else if (this.x > 25) {
-                    this.col = 1;
-                    };
+        this.col = 4;
+    } else if (this.x > 225) {
+        this.col = 3;
+    } else if (this.x > 125) {
+        this.col = 2;
+    } else if (this.x > 25) {
+        this.col = 1;
+    };
 
     if (this.x > 480) {
         this.colBehind = 5;
     } else if (this.x > 380) {
-            this.colBehind = 4;
-        } else if (this.x > 280) {
-                this.colBehind = 3;
-            } else if (this.x > 180) {
-                    this.colBehind = 2;
-                } else if (this.x > 80) {
-                    this.colBehind = 1;
-                    };
+        this.colBehind = 4;
+    } else if (this.x > 280) {
+        this.colBehind = 3;
+    } else if (this.x > 180) {
+        this.colBehind = 2;
+    } else if (this.x > 80) {
+        this.colBehind = 1;
+    };
 
-//var pauseEnemy = function() {
-//   this.speed = 0;
-//}
+    //var pauseEnemy = function() {
+    //   this.speed = 0;
+    //}
 
 
     if (this.row == player.row) {
@@ -80,8 +80,8 @@ Enemy.prototype.render = function() {
 
     if (this.x < 650) {
 
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    //console.log(this.x);
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+        //console.log(this.x);
     };
 };
 
@@ -112,9 +112,9 @@ var enemyTimeout = function() {
 
 
 var createEnemy = function() {
-        var enemyNew = new Enemy();
-        allEnemies.push(enemyNew);
-        //console.log(allEnemies);
+    var enemyNew = new Enemy();
+    allEnemies.push(enemyNew);
+    //console.log(allEnemies);
 };
 
 enemyTimeout();
@@ -140,40 +140,36 @@ Player.prototype.update = function(dt) {
         //console.log(this.x+ "x again");
         //console.log(this.y+ "y in func");
 
-            if (key == 'left') {
-                if (this.col == 0) {}
-                    else {
+        if (key == 'left') {
+            if (this.col == 0) {} else {
                 this.col = this.col - 1;
                 //console.log(this.col);
                 this.x = colToCoord(this.col);
                 //console.log(this.x);
             }
-            } else if (key == 'right') {
-                if (this.col == 4) {}
-                    else {
-                    this.col = this.col + 1;
-                    this.x = colToCoord(this.col);
-                };
-            } else if (key == 'up') {
-                if (this.row == 0) {}
-                    else {
-                    this.row = this.row - 1;
-                    this.y = rowToCoord(this.row);
-                }
-            } else if (key == 'down') {
-                if (this.row == 5) {}
-                    else {
-                    this.row = this.row + 1;
-                    this.y = rowToCoord(this.row);
-                }
+        } else if (key == 'right') {
+            if (this.col == 4) {} else {
+                this.col = this.col + 1;
+                this.x = colToCoord(this.col);
+            };
+        } else if (key == 'up') {
+            if (this.row == 0) {} else {
+                this.row = this.row - 1;
+                this.y = rowToCoord(this.row);
             }
-        };
+        } else if (key == 'down') {
+            if (this.row == 5) {} else {
+                this.row = this.row + 1;
+                this.y = rowToCoord(this.row);
+            }
+        }
+    };
 };
 
 var rowToCoord = function(gridValue) {
-        gridValue = 70 + (83 * (gridValue - 1));
-        return gridValue;
-    };
+    gridValue = 70 + (83 * (gridValue - 1));
+    return gridValue;
+};
 
 var colToCoord = function(gridValue) {
     gridValue = gridValue * 101;
@@ -237,5 +233,3 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
-
