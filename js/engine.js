@@ -185,3 +185,24 @@ var Engine = (function(global) {
      */
     global.ctx = ctx;
 })(this);
+
+var gameOverTimeout = function() {
+
+    activeGame = 0;
+    ctx.clearRect(0, 0, 505, 606);
+    allEnemies.length = 0;
+    player.row = 5;
+    player.col = 2;
+    player.x = 202;
+    player.y = 397;
+
+};
+
+var gameOver = function() {
+
+    ctx.font = "30px Arial";
+    ctx.fillText("GAME OVER", 300, 300);
+    setTimeout(gameOverTimeout, 0);
+
+
+};
