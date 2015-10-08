@@ -184,9 +184,8 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
-})(this);
-
-var gameOverTimeout = function() {
+    
+    var gameOverTimeout = function() {
 
     activeGame = 0;
     ctx.clearRect(0, 0, 505, 606);
@@ -206,3 +205,6 @@ var gameOver = function() {
 
 
 };
+})(this);
+
+
