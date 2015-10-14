@@ -187,24 +187,27 @@ var Engine = (function(global) {
     
     var gameOverTimeout = function() {
 
-    activeGame = 0;
-    ctx.clearRect(0, 0, 505, 606);
-    allEnemies.length = 0;
-    player.row = 5;
-    player.col = 2;
-    player.x = 202;
-    player.y = 397;
+        activeGame = 0;
+        ctx.clearRect(0, 0, 505, 606);
+        allEnemies.length = 0;
+        player.row = 5;
+        player.col = 2;
+        player.x = 202;
+        player.y = 397;
 
-};
+    };
 
-var gameOver = function() {
+    var gameOver = function() {
 
-    ctx.font = "30px Arial";
-    ctx.fillText("GAME OVER", 300, 300);
-    setTimeout(gameOverTimeout, 0);
+        ctx.font = "30px Arial";
+        ctx.fillText("GAME OVER", 300, 300);
+        setTimeout(gameOverTimeout, 0);
 
+    };
 
-};
+    global.gameOver = gameOver;
+    global.gameOverTimeout = gameOverTimeout;
+
 })(this);
 
 
